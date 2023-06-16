@@ -4,11 +4,94 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/stlye.css">
     <title>Jeopardy</title>
   </head>
-  <body>
-    <h1>Round One</h1>
+  
+    
+          
+<body>
+
+  <header class="top">Round One!</header>
+    
+          <div class="player-turn">Player Turn</div>
+
+    <div class="main-container">
+          <div class="question-table">
+              <div class="category" id="nature">
+                <p>Nature</p>
+                <button type="submit" id="btn-one" class="questions">100</button>
+                <button type="submit" id="btn-two" class="questions">200</button>
+                <button type="submit" id="btn-three" class="questions">300</button>
+                <button type="submit" id="btn-four" class="questions">400</button>
+                <button type="submit" id="btn-five" class="questions">500</button>
+              </div>
+              <div class="category" id="animals">
+                <p>Animals</p>
+                <button type="submit" id="btn-one" class="questions">100</button>
+                <button type="submit" id="btn-two" class="questions">200</button>
+                <button type="submit" id="btn-three" class="questions">300</button>
+                <button type="submit" id="btn-four" class="questions">400</button>
+                <button type="submit" id="btn-five" class="questions">500</button>
+              </div>
+              <div class="category" id="computers">
+                <p>Computers</p>
+                <button type="submit" id="btn-one" class="questions">100</button>
+                <button type="submit" id="btn-two" class="questions">200</button>
+                <button type="submit" id="btn-three" class="questions">300</button>
+                <button type="submit" id="btn-four" class="questions">400</button>
+                <button type="submit" id="btn-five" class="questions">500</button>
+              </div>
+              <div class="category" id="mythology">
+                <p>Mythology</p>
+                <button type="submit" id="btn-one" class="questions">100</button>
+                <button type="submit" id="btn-two" class="questions">200</button>
+                <button type="submit" id="btn-three" class="questions">300</button>
+                <button type="submit" id="btn-four" class="questions">400</button>
+                <button type="submit" id="btn-five" class="questions">500</button>
+              </div>
+              <div class="category" id="history">
+                <p>History</p>
+                <button type="submit" id="btn-one" class="questions">100</button>
+                <button type="submit" id="btn-two" class="questions">200</button>
+                <button type="submit" id="btn-three" class="questions">300</button>
+                <button type="submit" id="btn-four" class="questions">400</button>
+                <button type="submit" id="btn-five" class="questions">500</button>
+              </div>
+              <div class="category" id="general">
+                <p>General</p>
+                <button type="submit" id="btn-one" class="questions">100</button>
+                <button type="submit" id="btn-two" class="questions">200</button>
+                <button type="submit" id="btn-three" class="questions">300</button>
+                <button type="submit" id="btn-four" class="questions">400</button>
+                <button type="submit" id="btn-five" class="questions">500</button>
+              </div>
+              
+          </div>
+      
+      <div class="answer">
+          <p><input type="text" id="answer" placeholder="Answer"><p>
+          <div>
+          <button class="guess">Guess</button>
+          <button class="pass">Pass</button>
+          </div>
+      </div>
+
+      <section class="player-score">
+        <p>Player one score:</p>
+        <p>Player two Score:</p>
+      </section>
+
+      <div class="next">
+        <a href="./round-2.html" class="next">Next Round</a>
+      </div>
+
+
+  
+    </div>
+    <footer>Made by Cyrus Fullam. Thanks for playing!</footer>
     <!-- Do not change the script source. Allows import/export to work. -->
     <script src="./scripts/index.js" type="module"></script>
-  </body>
+    <script src="./scripts/round-1.js" type="module"></script>
+</body>
 </html>
