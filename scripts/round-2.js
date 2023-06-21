@@ -61,6 +61,7 @@ let playerTwoScore = 0;
 let currentTurn = 1;
 guess.disabled = true;
 pass.disabled = true;
+next.disabled = true;
 let answer = "";
 let index;
 let questionIndex;

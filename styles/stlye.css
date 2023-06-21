@@ -45,6 +45,7 @@ body {
 footer {
     display: flex;
     justify-content: center;
+    
     width: 100%;
     font-size: 2em;
     background-color: rgb(62, 64, 226);
