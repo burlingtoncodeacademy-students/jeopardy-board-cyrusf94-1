@@ -4,11 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/stlye.css">
     <title>Jeopardy</title>
   </head>
-  <body>
-    <h1>Round One</h1>
+  
+    
+          
+<body>
+  <h2 class="title">Round one!</h2>
+  <div class="game-board" id="game-board">
+  </div>
+  <div id="player-turn">Player turn:<span id="turn">one</span></div>
+  <div class="input-form">
+    <form>
+      <input type="text" id="user-input" placeholder="What is?">
+    <div id="guess-pass">
+      <button  id="guess">Guess</button>
+      <button  id="pass">Pass</button>
+    </div>
+    </form>
+  </div>
+  <div id="scores">
+    <div class="scores">Player one score: <span id="score-one">0</span></div>
+    <div class="scores">Player two score: <span id="score-two">0</span></div>
+  </div>
+    <div id="next">
+      <button id="nextBtn" type="button">Next Round</button>
+    </div>
+    <footer>Made by Cyrus Fullam. Thanks for playing!</footer>
     <!-- Do not change the script source. Allows import/export to work. -->
-    <script src="./scripts/index.js" type="module"></script>
-  </body>
+    <script src="./scripts/round-1.js" type="module"></script>
+</body>
 </html>

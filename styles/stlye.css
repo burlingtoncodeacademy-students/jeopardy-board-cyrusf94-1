@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #747d8c;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    width: 100%;
+    font-size: 3em;
+    color: rgb(236, 210, 176);
+    background-color: #104eb9;
+}
+
+#play {
+    height: 100px;
+    width: 100px;
+    font-size: 2em;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: #082b68;
+    color: aliceblue;
+    font-weight: bold;
+}
+
+#play:hover {
+    background-color: rgb(62, 64, 226);
+}
+
+#welcome-img img {
+    width: 500px;
+}
+#player-turn {
+    font-size: 2em;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    
+    width: 100%;
+    font-size: 2em;
+    background-color: rgb(62, 64, 226);
+}
+.game-board {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.category-column {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.category-title {
+    color: rgb(33, 211, 211);
+    background-color: rgb(60, 60, 230);
+    font-size: 1.5em;
+    border: 1px solid black;
+}
+
+.qbtn {
+    width: 150px;
+    height: 150px;
+    font-size: 2em;
+    background-color: #104eb9;
+    
+    
+}
+
+.qbtn:hover {
+    background-color: rgb(103, 103, 143);
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#user-input {
+    display: flex;
+    margin-top: 20px;
+    width: 20em;
+    height: 3em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#bet-input {
+    display: flex;
+    margin-top: 20px;
+    width: 20em;
+    height: 3em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+#guess-pass {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5em;
+}
+
+#guess, #pass {
+    width: 75px;
+    height: 50px;
+    font-size: 15px;
+}
+
+#scores {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 1.5em;
+    display: flex;
+    gap: 15em;
+}
+
+#next {
+    display: flex;
+    width: 50em;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 25px;
+}
+
+#next button {
+    height: 100px;
+    width: 100px;
+    font-size: 1.5em;
+    background-color: #214fa0;
+    border-radius: 3px;
+}
+
+#next button:hover {
+    background-color: #394d70;
+}
+
+#final {
+    display: flex;
+    background-color: #082b68;
+    width: 500px;
+    height: 300px;
+    font-size: 4em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: aliceblue;
+    border: 5px solid #104eb9;
+    border-radius: 3px;
+}
+
+#final:hover {
+    background-color: #394d70;
+}
