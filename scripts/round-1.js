@@ -9,6 +9,7 @@ let pass = document.getElementById("pass");
 let scoreOne = document.getElementById("score-one");
 let scoreTwo = document.getElementById("score-two");
 let turn = document.getElementById("turn")
+let next = document.getElementById("nextBtn");
 // a look up for the qustion index to easily navigate data
 const qIndex = {
     "Nature": 0,
@@ -19,7 +20,7 @@ const qIndex = {
     "General": 5
 }
 
-const pointAmount = [200, 400, 600, 800, 1000];
+const pointAmount = [200, 400, 600, 800, 1000, 400, 800, 1200, 1600, 2000];
 const categorys = [
     {
         category: "Nature",
@@ -53,7 +54,21 @@ const categorys = [
     },
 ]
 
-
+// global variables that saved me
+let playerOneScore = 30000;
+let playerTwoScore = 30000;
+let currentTurn = 1;
+guess.disabled = true;
+pass.disabled = true;
+next.disabled = true;
+let answer = "";
+let index;
+let questionIndex;
+let currentBtn;
+let input;
+let playerPass = false;
+let playerTurnCheck = 1;
+let boardCheck = 0;
 
 // organizing data for myself 
 placeholderQuestions.forEach(i => {
@@ -112,52 +127,124 @@ let renderBoard = categorys => {
     }
     
 function  displayQuestion() {
-    let questionIndex = Number(this.getAttribute("index-id"));
-    let index = qIndex[this.parentElement.getAttribute("category-name")];
+    guess.disabled = false;
+    pass.disabled = false;
+    playerPass = false;
+    playerTurnCheck = 1;
+    questionIndex = Number(this.getAttribute("index-id"));
+    index = qIndex[this.parentElement.getAttribute("category-name")];
     this.style = "font-size: 14px; font-weight: bold;";
     this.innerText = categorys[index].questions[questionIndex];
     const allBoard = Array.from(document.querySelectorAll('.qbtn'));
     allBoard.forEach(btn => btn.removeEventListener('click', displayQuestion));
     console.log(categorys[index].answers[questionIndex])
-    guess.addEventListener('click', evt => {
-        evt.preventDefault();
-        if (getAnswer(index,questionIndex)) {
-            addPoints(pointAmount[questionIndex], scoreOne);
-            allBoard.forEach(btn => btn.addEventListener('click', displayQuestion));
-            userInput.value = "";
-            this.innerText = '';
-            this.disabled = true;
-        } else {
-            removePoints(pointAmount[questionIndex], scoreOne);
-        }
-    }); 
+    currentBtn = this;
 }
 
-function getAnswer(index, questionIndex) {
-    let answer = (categorys[index].answers[questionIndex]).toLowerCase()
-    let input = userInput.value;
+guess.addEventListener('click', evt => {
+    evt.preventDefault();
+    nextRound();
+    getResult(index, questionIndex, currentBtn)
+})
 
-    if (answer.toLowerCase() === input.toLowerCase()) {
-        return true;
+pass.addEventListener('click', evt => {
+    evt.preventDefault();
+    pass.disabled = true;
+    if (playerPass === false) {
+        currentTurn = playerChange(currentTurn);
+        playerPass = true;
     } else {
-        return false;
+        return;
+    }
+
+})
+
+function getResult(index, questionIndex, btn) {
+    answer = (categorys[index].answers[questionIndex]).toLowerCase()
+    input = userInput.value.toLowerCase();
+    const allBoard = Array.from(document.querySelectorAll('.qbtn'));
+    
+    if (input === answer) {
+        addPoints(pointAmount[questionIndex], currentTurn);
+        allBoard.forEach(btn => btn.addEventListener('click', displayQuestion));
+        userInput.value = "";
+        btn.disabled = true;
+        btn.innerHTML = "";
+        boardCheck++;
+        guess.disabled = true;
+        pass.disabled = true;
+        return;
+    } else if (input != answer) {
+        if (playerTurnCheck < 2) {
+            playerTurnCheck++;
+            userInput.value = "";
+            pass.disabled = true;
+            removePoints(pointAmount[questionIndex], currentTurn);
+            currentTurn = playerChange(currentTurn);
+            return;
+        } else {
+            removePoints(pointAmount[questionIndex], currentTurn);
+            allBoard.forEach(btn => btn.addEventListener('click', displayQuestion));
+            userInput.value = "";
+            btn.disabled = true;
+            btn.innerHTML = "";
+            guess.disabled = true;
+            pass.disabled = true;
+            boardCheck++;
+            currentTurn = playerChange(currentTurn);
+            return;
+        }
+    }
+
+
+}
+
+function addPoints(points, currentTurn) {
+    if (currentTurn === 1) {
+        playerOneScore = playerOneScore + points;
+        scoreOne.innerHTML = playerOneScore;
+        return;
+    } else  if (currentTurn === 2) {
+        playerTwoScore = playerTwoScore + points;
+        scoreTwo.innerHTML = playerTwoScore;
+        return;
     }
 }
 
-function addPoints(points, whatScore) {
-    let score = Number(whatScore.innerText);
-    score = score += points;
-    whatScore.innerHTML = score;
+function removePoints(points, currentTurn) {
+    if (currentTurn === 1) {
+        playerOneScore = playerOneScore - points;
+        scoreOne.innerHTML = playerOneScore;
+        return;
+    } else  if (currentTurn === 2) {
+        playerTwoScore = playerTwoScore - points;
+        scoreTwo.innerHTML = playerTwoScore;
+        return;
+    }
 }
 
-function removePoints(points, whatScore) {
-    whatScore.innerText = (Number(whatScore.innerText) - points);
+function playerChange(currentTurn) {
+    if (currentTurn === 1) {
+        turn.innerHTML = "two";
+        return 2;
+    } else if (currentTurn === 2){
+        turn.innerHTML = "one";
+        return 1;
+    }
 }
 
 
 categorys.forEach(category => renderBoard(category));
 
+
+
 // will wait for the score to reach a certain point and then enable next round
-if (Number(scoreOne.innerHTML) >= 15000 || Number(scoreTwo) >= 15000) {
-        console.log('next round')
+function nextRound() {
+if (playerOneScore >= 15000 || playerTwoScore >= 15000 || boardCheck === 29) {
+    next.disabled = false;
+        next.addEventListener('click', evt => {
+            evt.preventDefault();
+            document.location = `./round-2.html?scoreOne=${playerOneScore}&scoreTwo=${playerTwoScore}`;
+        })
+}
 }
