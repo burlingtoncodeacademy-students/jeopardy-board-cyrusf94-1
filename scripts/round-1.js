@@ -1,6 +1,6 @@
 // Do not change the import statement
 import placeholderQuestions from "./placeholder-questions.js";
-console.log(placeholderQuestions)
+
 
 let gameBoard = document.getElementById("game-board");
 let userInput = document.getElementById("user-input");
@@ -55,8 +55,8 @@ const categorys = [
 ]
 
 // global variables that saved me
-let playerOneScore = 30000;
-let playerTwoScore = 30000;
+let playerOneScore = 0;
+let playerTwoScore = 0;
 let currentTurn = 1;
 guess.disabled = true;
 pass.disabled = true;

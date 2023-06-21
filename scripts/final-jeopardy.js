@@ -1,6 +1,6 @@
 // Do not change the import statement
 import placeholderQuestions from "./placeholder-questions.js";
-console.log(placeholderQuestions)
+
 
 let gameBoard = document.getElementById("game-board");
 let userInput = document.getElementById("user-input");
@@ -70,7 +70,6 @@ guess.addEventListener('click', evt => {
         guess.disabled = true;
         turnCheck();
     }
-    console.log(betOne, inputOne, betTwo, inputTwo);
 })
 
 // checks the playerTurnCheck to make sure both have entered
